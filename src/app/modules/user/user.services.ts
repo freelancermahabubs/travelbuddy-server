@@ -16,7 +16,8 @@ const createUser = async (req: Request) => {
   const hashPassword = await hashedPassword(req.body.password);
   const result = await prisma.user.create({
     data: {
-      email: req.body.doctor.email,
+      username: req.body.username,
+      email: req.body.email,
       password: hashPassword,
       role: UserRole.USER,
     },
@@ -30,6 +31,7 @@ const createAdmin = async (req: Request): Promise<Admin> => {
   const result = await prisma.$transaction(async (transactionClient) => {
     await transactionClient.user.create({
       data: {
+        username: req.body.username,
         email: req.body.admin.email,
         password: hashPassword,
         role: UserRole.ADMIN,
@@ -110,6 +112,7 @@ const getAllUser = async (
           },
     select: {
       id: true,
+      username: true,
       email: true,
       role: true,
       needPasswordChange: true,
