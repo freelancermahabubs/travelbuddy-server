@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Travel Buddy Server\\logs\\winston\\successes\\.86d9e2c4f02b67d4fe75b6c65656e9b65405a20d-audit.json",
+    "files": [
+        {
+            "date": 1716309214505,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\phu-2024-21-05-22-success.log",
+            "hash": "244f11f0e5fa3428ae813ff7638351d3ca62c0f2128e2a1db85d039b4bc606d6"
+        }
+    ],
+    "hashType": "sha256"
+}
