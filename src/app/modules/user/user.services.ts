@@ -13,11 +13,12 @@ import {IUploadFile} from "../../../interfaces/file";
 import {FileUploadHelper} from "../../../helpers/fileUploadHelper";
 
 const createUser = async (req: Request) => {
+
   const hashPassword = await hashedPassword(req.body.password);
   const result = await prisma.user.create({
     data: {
-      username: req.body.username,
-      email: req.body.email,
+      username: req?.body?.user?.username,
+      email: req?.body?.user?.email,
       password: hashPassword,
       role: UserRole.USER,
     },

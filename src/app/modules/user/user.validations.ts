@@ -1,10 +1,12 @@
 import {z} from "zod";
 
 const createUser = z.object({
-  password: z.string(),
-  user: z.object({
-    email: z.string().email(),
-    username: z.string(),
+  body: z.object({
+    password: z.string(),
+    user: z.object({
+      email: z.string().email(),
+      username: z.string(),
+    }),
   }),
 });
 

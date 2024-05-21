@@ -27,8 +27,8 @@ const seedSuperAdmin = async () => {
         admin: {
           create: {
             name: "Super Admin",
-            //email: "super@admin.com",
-            contactNumber: "01234567890",
+
+            contactNumber: "01405330209",
           },
         },
       },
