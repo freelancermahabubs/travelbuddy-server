@@ -18,12 +18,21 @@ import {sendEmail} from "./sendResetMail";
 import {UserStatus} from "@prisma/client";
 
 const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
-  const {email, password} = payload;
+  const {email, password, username} = payload;
 
-  const isUserExist = await prisma.user.findUnique({
+  const isUserExist = await prisma.user.findFirst({
     where: {
-      email,
-      status: UserStatus.ACTIVE,
+      AND: [
+        {
+          status: UserStatus.ACTIVE,
+        },
+        {
+          OR: [
+            { email },
+            { username }
+          ],
+        },
+      ],
     },
   });
 
@@ -40,7 +49,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 
   const {id: userId, role, needPasswordChange} = isUserExist;
   const accessToken = jwtHelpers.createToken(
-    {userId, role, email},
+    {userId, role, email: isUserExist.email},
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );

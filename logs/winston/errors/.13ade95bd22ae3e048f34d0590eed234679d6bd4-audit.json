@@ -19,6 +19,16 @@
             "date": 1716315803861,
             "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\phu-2024-22-05-00-error.log",
             "hash": "2093e5d430202fbf49c89960574ec1edf4fd34a79941b0e2bed980ab88201db6"
+        },
+        {
+            "date": 1716349641453,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\phu-2024-22-05-09-error.log",
+            "hash": "eb503f9ffd8266685855576c82d1b41da912c7d494ad4af703af406762cf21db"
+        },
+        {
+            "date": 1716350450540,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\phu-2024-22-05-10-error.log",
+            "hash": "47ba29781d9daffe909f2f36d27642d70ce5fab708d5e4aeab3626b55fb3501c"
         }
     ],
     "hashType": "sha256"
