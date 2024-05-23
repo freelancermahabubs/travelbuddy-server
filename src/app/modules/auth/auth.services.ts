@@ -123,7 +123,6 @@ const changePassword = async (
     throw new ApiError(httpStatus.NOT_FOUND, "User does not exist");
   }
 
-  // checking old password
   if (
     isUserExist.password &&
     !(await AuthUtils.comparePasswords(oldPassword, isUserExist.password))

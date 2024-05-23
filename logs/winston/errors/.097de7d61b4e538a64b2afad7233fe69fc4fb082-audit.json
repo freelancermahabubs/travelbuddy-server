@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Travel Buddy Server\\logs\\winston\\errors\\.097de7d61b4e538a64b2afad7233fe69fc4fb082-audit.json",
+    "files": [
+        {
+            "date": 1716350702757,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-10-error.log",
+            "hash": "9c267849772e397a5c56484885f7e6fb91e10f9694b0976465d3fb2b023e8ed9"
+        },
+        {
+            "date": 1716379407329,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-18-error.log",
+            "hash": "182ad0657bbd99b321472fb42d5f87211947bece3ee71b64ee131d273183ee63"
+        },
+        {
+            "date": 1716382824979,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-19-error.log",
+            "hash": "a8200e8c4a0f3711ce48f487777c2fc64b50c7e2f182345236f86c0b089e1208"
+        }
+    ],
+    "hashType": "sha256"
+}
