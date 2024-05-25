@@ -19,6 +19,41 @@
             "date": 1716382824979,
             "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-19-error.log",
             "hash": "a8200e8c4a0f3711ce48f487777c2fc64b50c7e2f182345236f86c0b089e1208"
+        },
+        {
+            "date": 1716386523953,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-20-error.log",
+            "hash": "465cf04290a0869f865b8ed599572c0814b4ae095ac2673e1e75a3b4e9927b4f"
+        },
+        {
+            "date": 1716392268819,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-21-error.log",
+            "hash": "08b7a41f5e861a97f8e1bd1da368f3ead5b5ab635207880fbea1aa80b37d80b3"
+        },
+        {
+            "date": 1716393922383,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-22-error.log",
+            "hash": "b6c436e0e89edf79baa349f1ba0e3f21d60a46d245aabb907f91df18b3c7c6c8"
+        },
+        {
+            "date": 1716397890366,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-22-05-23-error.log",
+            "hash": "24e250557825f8acc10c07cf23a8ce19355915263afa5d839d93fa5dbc430648"
+        },
+        {
+            "date": 1716428420148,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-23-05-07-error.log",
+            "hash": "2d682b747fd4528a7c458d1a715a2b3eb769107f495bb0610668a79981120b50"
+        },
+        {
+            "date": 1716429657309,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-23-05-08-error.log",
+            "hash": "2408ecef7054ecaf955723df2070daa828ed96a540daf8ebf48d803abe9c71ac"
+        },
+        {
+            "date": 1716434322136,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-23-05-09-error.log",
+            "hash": "b39eeefe582801ffe7a05684890bfa80ca4c9c451c3f38a2fd8600132b198fd5"
         }
     ],
     "hashType": "sha256"

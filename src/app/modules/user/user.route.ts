@@ -7,19 +7,11 @@ import {ENUM_USER_ROLE} from "../../../enums/user";
 
 const router = express.Router();
 
-router.get(
-  "/",
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  UserController.getAllUser
-);
+router.get("/", auth(ENUM_USER_ROLE.ADMIN), UserController.getAllUser);
 
 router.get(
   "/me",
-  auth(
-    ENUM_USER_ROLE.ADMIN,
-
-    ENUM_USER_ROLE.SUPER_ADMIN
-  ),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
   UserController.getMyProfile
 );
 
@@ -31,20 +23,21 @@ router.post(
 
 router.post(
   "/create-admin",
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   UserController.createAdmin
 );
 
 router.patch(
   "/:id/status",
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(UserValidation.updateStatus),
   UserController.changeProfileStatus
 );
+router.delete("/:id", auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser);
 
 router.patch(
   "/update-my-profile",
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
   UserController.updateMyProfile
 );
 

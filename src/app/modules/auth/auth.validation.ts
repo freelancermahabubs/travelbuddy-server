@@ -1,18 +1,19 @@
 import {z} from "zod";
 
 const loginZodSchema = z.object({
-    body: z.object({
+  body: z
+    .object({
       username: z.string().optional(),
       email: z.string().optional(),
       password: z.string({
         required_error: "Password is required",
       }),
-    }).refine((data) => data.username || data.email, {
+    })
+    .refine((data) => data.username || data.email, {
       message: "Either username or email is required",
       path: ["body", "username"],
     }),
-  });
-
+});
 
 const refreshTokenZodSchema = z.object({
   cookies: z.object({
@@ -24,7 +25,7 @@ const refreshTokenZodSchema = z.object({
 
 const changePasswordZodSchema = z.object({
   body: z.object({
-    oldPassword: z.string({
+    currentPassword: z.string({
       required_error: "Old password  is required",
     }),
     newPassword: z.string({

@@ -1,28 +1,28 @@
-import { Admin, Prisma, UserStatus } from '@prisma/client';
-import { IGenericResponse } from '../../../interfaces/common';
-import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IAdminFilterRequest } from './admin.interface';
-import { paginationHelpers } from '../../../helpers/paginationHelper';
-import prisma from '../../../shared/prisma';
-import { adminSearchableFields } from './admin.constants';
-import ApiError from '../../../errors/ApiError';
-import httpStatus from 'http-status';
+import {Admin, Prisma, UserStatus} from "@prisma/client";
+import {IGenericResponse} from "../../../interfaces/common";
+import {IPaginationOptions} from "../../../interfaces/pagination";
+import {IAdminFilterRequest} from "./admin.interface";
+import {paginationHelpers} from "../../../helpers/paginationHelper";
+import prisma from "../../../shared/prisma";
+import {adminSearchableFields} from "./admin.constants";
+import ApiError from "../../../errors/ApiError";
+import httpStatus from "http-status";
 
 const getAllFromDB = async (
   filters: IAdminFilterRequest,
-  options: IPaginationOptions,
+  options: IPaginationOptions
 ): Promise<IGenericResponse<Admin[]>> => {
-  const { limit, page, skip } = paginationHelpers.calculatePagination(options);
-  const { searchTerm, ...filterData } = filters;
+  const {limit, page, skip} = paginationHelpers.calculatePagination(options);
+  const {searchTerm, ...filterData} = filters;
 
   const andConditions = [];
 
   if (searchTerm) {
     andConditions.push({
-      OR: adminSearchableFields.map(field => ({
+      OR: adminSearchableFields.map((field) => ({
         [field]: {
           contains: searchTerm,
-          mode: 'insensitive',
+          mode: "insensitive",
         },
       })),
     });
@@ -30,7 +30,7 @@ const getAllFromDB = async (
 
   if (Object.keys(filterData).length > 0) {
     andConditions.push({
-      AND: Object.keys(filterData).map(key => {
+      AND: Object.keys(filterData).map((key) => {
         return {
           [key]: {
             equals: (filterData as any)[key],
@@ -44,7 +44,7 @@ const getAllFromDB = async (
   });
 
   const whereConditions: Prisma.AdminWhereInput =
-    andConditions.length > 0 ? { AND: andConditions } : {};
+    andConditions.length > 0 ? {AND: andConditions} : {};
 
   const result = await prisma.admin.findMany({
     where: whereConditions,
@@ -52,9 +52,9 @@ const getAllFromDB = async (
     take: limit,
     orderBy:
       options.sortBy && options.sortOrder
-        ? { [options.sortBy]: options.sortOrder }
+        ? {[options.sortBy]: options.sortOrder}
         : {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
   });
   const total = await prisma.admin.count({
@@ -83,7 +83,7 @@ const getByIdFromDB = async (id: string): Promise<Admin | null> => {
 
 const updateIntoDB = async (
   id: string,
-  payload: Partial<Admin>,
+  payload: Partial<Admin>
 ): Promise<Admin | null> => {
   const admin = await prisma.admin.findUnique({
     where: {
@@ -92,7 +92,7 @@ const updateIntoDB = async (
     },
   });
   if (!admin) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'This admin does not exist');
+    throw new ApiError(httpStatus.NOT_FOUND, "This admin does not exist");
   }
   const result = await prisma.admin.update({
     where: {
@@ -105,7 +105,7 @@ const updateIntoDB = async (
 };
 
 const deleteFromDB = async (id: string): Promise<Admin> => {
-  return await prisma.$transaction(async transactionClient => {
+  return await prisma.$transaction(async (transactionClient) => {
     const deletedAdmin = await transactionClient.admin.delete({
       where: {
         id,
@@ -123,9 +123,9 @@ const deleteFromDB = async (id: string): Promise<Admin> => {
 };
 
 const softDelete = async (id: string): Promise<Admin> => {
-  return await prisma.$transaction(async transactionClient => {
+  return await prisma.$transaction(async (transactionClient) => {
     const deletedAdmin = await transactionClient.admin.update({
-      where: { id },
+      where: {id},
       data: {
         isDeleted: true,
       },

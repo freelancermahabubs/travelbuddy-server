@@ -1,4 +1,4 @@
-import {Admin, Prisma, UserRole, UserStatus} from "@prisma/client";
+import {Admin, Prisma, User, UserRole, UserStatus} from "@prisma/client";
 import prisma from "../../../shared/prisma";
 import ApiError from "../../../errors/ApiError";
 import httpStatus from "http-status";
@@ -9,11 +9,8 @@ import {IGenericResponse} from "../../../interfaces/common";
 import {paginationHelpers} from "../../../helpers/paginationHelper";
 import {userSearchableFields} from "./user.constant";
 import {Request} from "express";
-import {IUploadFile} from "../../../interfaces/file";
-import {FileUploadHelper} from "../../../helpers/fileUploadHelper";
 
 const createUser = async (req: Request) => {
-
   const hashPassword = await hashedPassword(req.body.password);
   const result = await prisma.user.create({
     data: {
@@ -150,15 +147,7 @@ const getMyProfile = async (authUser: any) => {
     },
   });
 
-  let profileData;
-  if (userData?.role === UserRole.ADMIN) {
-    profileData = await prisma.admin.findUnique({
-      where: {
-        email: userData.email,
-      },
-    });
-  }
-  return {...profileData, ...userData};
+  return userData;
 };
 
 const updateMyProfile = async (authUser: any, req: Request) => {
@@ -172,28 +161,23 @@ const updateMyProfile = async (authUser: any, req: Request) => {
   if (!userData) {
     throw new ApiError(httpStatus.BAD_REQUEST, "User does not exists!");
   }
-
-  const file = req.file as IUploadFile;
-
-  if (file) {
-    const uploadedProfileImage =
-      await FileUploadHelper.uploadToCloudinary(file);
-    req.body.profilePhoto = uploadedProfileImage?.secure_url;
-  }
-
   let profileData;
-  if (userData?.role === UserRole.ADMIN) {
-    profileData = await prisma.admin.update({
-      where: {
-        email: userData.email,
-      },
-      data: req.body,
-    });
-  }
+  profileData = await prisma.user.update({
+    where: {
+      email: userData.email,
+    },
+    data: req.body,
+  });
 
   return {...profileData, ...userData};
 };
+const userDelete = async (id: string): Promise<{user: User | null}> => {
+  const deletedUser = await prisma.user.delete({
+    where: {id},
+  });
 
+  return {user: deletedUser};
+};
 export const UserServices = {
   createUser,
   createAdmin,
@@ -201,4 +185,5 @@ export const UserServices = {
   getAllUser,
   getMyProfile,
   updateMyProfile,
+  userDelete,
 };

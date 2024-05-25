@@ -11,16 +11,21 @@ datasource db {
 }
 
 model User {
-  id                 String     @id @default(uuid())
-  username           String     @unique
-  email              String     @unique
+  id       String @id @default(uuid())
+  username String @unique
+
+  email              String          @unique
   password           String
-  role               UserRole   @default(USER)
-  needPasswordChange Boolean    @default(true)
-  status             UserStatus @default(ACTIVE)
-  createdAt          DateTime   @default(now())
-  updatedAt          DateTime   @updatedAt
+  profilePhoto       String?
+  role               UserRole        @default(USER)
+  needPasswordChange Boolean         @default(true)
+  status             UserStatus      @default(ACTIVE)
+  gender             Gender?
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
   admin              Admin?
+  Trip               Trip[]
+  TravelRequest      TravelRequest[]
 
   @@map("users")
 }
@@ -34,16 +39,57 @@ model Admin {
   isDeleted     Boolean  @default(false)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-
-  user User @relation(references: [email], fields: [email])
+  user          User     @relation(references: [email], fields: [email])
 
   @@map("admins")
 }
 
+model Trip {
+  id          String          @id @default(cuid())
+  destination String
+  photos      String[]
+  travelType  TravelType
+  description String
+  travelDates DateTime[]
+  user        User            @relation(fields: [userId], references: [id])
+  userId      String
+  requests    TravelRequest[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@map("trips")
+}
+
+model TravelRequest {
+  id             String       @id @default(cuid())
+  user           User         @relation(fields: [userId], references: [id])
+  userId         String
+  photos         String[]
+  trip           Trip         @relation(fields: [tripId], references: [id])
+  tripId         String
+  additionalInfo String?
+  status         TravelStatus @default(PENDING)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@map("travelRequests")
+}
+
 enum UserRole {
   ADMIN
-  SUPER_ADMIN
   USER
+}
+
+enum TravelStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum TravelType {
+  ADVENTURE
+  LEISURE
+  BUSINESS
 }
 
 enum UserStatus {

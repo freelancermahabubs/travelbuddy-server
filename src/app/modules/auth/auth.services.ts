@@ -27,10 +27,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
           status: UserStatus.ACTIVE,
         },
         {
-          OR: [
-            { email },
-            { username }
-          ],
+          OR: [{email}, {username}],
         },
       ],
     },
@@ -110,7 +107,7 @@ const changePassword = async (
   user: JwtPayload | null,
   payload: IChangePassword
 ): Promise<void> => {
-  const {oldPassword, newPassword} = payload;
+  const {currentPassword, newPassword} = payload;
 
   const isUserExist = await prisma.user.findUnique({
     where: {
@@ -125,9 +122,12 @@ const changePassword = async (
 
   if (
     isUserExist.password &&
-    !(await AuthUtils.comparePasswords(oldPassword, isUserExist.password))
+    !(await AuthUtils.comparePasswords(currentPassword, isUserExist?.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, "Old Password is incorrect");
+    throw new ApiError(
+      httpStatus.UNAUTHORIZED,
+      "Current Password is incorrect"
+    );
   }
 
   const hashPassword = await hashedPassword(newPassword);

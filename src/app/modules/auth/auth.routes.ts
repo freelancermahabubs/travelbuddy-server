@@ -22,7 +22,7 @@ router.post(
 router.post(
   "/change-password",
   validateRequest(AuthValidation.changePasswordZodSchema),
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
+  auth( ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
   AuthController.changePassword
 );
 router.post("/forgot-password", AuthController.forgotPass);

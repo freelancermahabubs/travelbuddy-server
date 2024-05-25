@@ -9,6 +9,13 @@ const createUser = z.object({
     }),
   }),
 });
+const updateUser = z.object({
+  body: z.object({
+    email: z.string().email().optional(),
+    username: z.string().optional(),
+    profilePhoto: z.string().optional(),
+  }),
+});
 
 const createAdmin = z.object({
   password: z.string(),
@@ -16,20 +23,6 @@ const createAdmin = z.object({
     email: z.string().email(),
     name: z.string(),
     contactNumber: z.string(),
-  }),
-});
-
-const createPatient = z.object({
-  password: z.string(),
-  patient: z.object({
-    email: z.string().email(),
-    name: z.string(),
-    contactNumber: z.string({
-      required_error: "Contact number is required!",
-    }),
-    address: z.string({
-      required_error: "Address is required",
-    }),
   }),
 });
 
@@ -42,6 +35,6 @@ const updateStatus = z.object({
 export const UserValidation = {
   createUser,
   createAdmin,
-  createPatient,
+
   updateStatus,
 };

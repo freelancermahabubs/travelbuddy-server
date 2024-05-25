@@ -19,6 +19,41 @@
             "date": 1716382824864,
             "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-22-05-19-success.log",
             "hash": "3e23293ddb395bf09a4d487cc8acc52e64625133e7a884ad537d0322882d9bcc"
+        },
+        {
+            "date": 1716386523947,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-22-05-20-success.log",
+            "hash": "dcc7f94be17f4cb09193c550a5056328278c7692740cb934295fd9b41407d6dd"
+        },
+        {
+            "date": 1716392268815,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-22-05-21-success.log",
+            "hash": "b9055513c8188869b74c506328d0a58bdf818c7d46f916a21fe35d5f29338740"
+        },
+        {
+            "date": 1716393922377,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-22-05-22-success.log",
+            "hash": "48f0af5cd14e48d8f709e29e9603dd4720dcd11b6b8191b7856ae3e73157e924"
+        },
+        {
+            "date": 1716397890360,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-22-05-23-success.log",
+            "hash": "f37f064e4ec72d557d3143d2f8eb682a3d0d674e9f3e9e9258ca64d7de8a0606"
+        },
+        {
+            "date": 1716428420138,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-23-05-07-success.log",
+            "hash": "eae60920704356be0cf0dc08eed9d4ca0107668a9e7ee9c5b14ee640aff7e5d4"
+        },
+        {
+            "date": 1716429657303,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-23-05-08-success.log",
+            "hash": "797aed9d35c9bfcb9697f3f4718bd606224a3130eafdba9d2235210c70f69d0d"
+        },
+        {
+            "date": 1716434322132,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-23-05-09-success.log",
+            "hash": "8acca6367453898414f099dc86cd63bca76c5cf94bc4af85c5dd507e174004c9"
         }
     ],
     "hashType": "sha256"
