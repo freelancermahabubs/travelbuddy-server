@@ -54,6 +54,26 @@
             "date": 1716434322132,
             "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-23-05-09-success.log",
             "hash": "8acca6367453898414f099dc86cd63bca76c5cf94bc4af85c5dd507e174004c9"
+        },
+        {
+            "date": 1716521917957,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-24-05-09-success.log",
+            "hash": "21547c2b81bf64825032c27d832df6db08119cb124fcdf5be3bd7fc80afeaa03"
+        },
+        {
+            "date": 1716523511719,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-24-05-10-success.log",
+            "hash": "6485940794379fb4449e119a57fb161a58abd01aa377ee7de5fd078d487fbde9"
+        },
+        {
+            "date": 1716604592116,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-25-05-08-success.log",
+            "hash": "6b664ada9220dbf7506a5168eb264cbcd8e4b8390586042f94b0f66e329a5063"
+        },
+        {
+            "date": 1716606602147,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\successes\\TB-2024-25-05-09-success.log",
+            "hash": "6fc438f15dc0432401a1353466b823c72ada673efab829d3bb76b769cb676e4b"
         }
     ],
     "hashType": "sha256"

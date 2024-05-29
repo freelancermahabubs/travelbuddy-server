@@ -24,8 +24,8 @@ model User {
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
   admin              Admin?
-  Trip               Trip[]
-  TravelRequest      TravelRequest[]
+  trips              Trip[]
+  travelRequests      TravelRequest[]
 
   @@map("users")
 }
@@ -48,7 +48,7 @@ model Trip {
   id          String          @id @default(cuid())
   destination String
   photos      String[]
-  travelType  TravelType
+  travelType TravelType
   description String
   travelDates DateTime[]
   user        User            @relation(fields: [userId], references: [id])

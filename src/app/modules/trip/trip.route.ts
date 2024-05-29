@@ -16,5 +16,7 @@ router.post(
   TripController.createTrip
 );
 router.get("/", TripController.getAllTrips);
+router.get("/:id", TripController.getByIdFromDB);
+router.delete("/:id", TripController.deleteTrip);
 
 export const tripRoutes = router;

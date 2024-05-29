@@ -24,7 +24,7 @@ const getAllTrips = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, tripFilterableFields);
   const options = pick(req.query, ["limit", "page", "sortBy", "sortOrder"]);
   const result = await TripServices.getAllTrips(filters, options);
-console.log(result, "hello")
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -33,7 +33,29 @@ console.log(result, "hello")
     data: result.data,
   });
 });
+
+const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
+  const {id} = req.params;
+  const result = await TripServices.getByIdFromDB(id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Trip retrieval By Id successfully",
+    data: result,
+  });
+});
+const deleteTrip = catchAsync(async (req: Request, res: Response) => {
+  const {id} = req.params;
+  await TripServices.tripDelete(id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Trip Delete successfully!",
+  });
+});
 export const TripController = {
   createTrip,
   getAllTrips,
+  deleteTrip,
+  getByIdFromDB,
 };

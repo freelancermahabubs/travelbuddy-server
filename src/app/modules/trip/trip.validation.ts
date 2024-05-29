@@ -5,7 +5,7 @@ const tripCreate = z.object({
     destination: z.string().min(1, {message: "Destination is required"}),
     description: z.string().min(1, {message: "Description is required"}),
     travelDates: z.array(z.string().transform((str) => new Date(str))),
-    travelType: z.string().min(1, {message: "Travel type is required"}),
+    travelType: z.enum(["ADVENTURE", "LEISURE", "BUSINESS"]),
     photos: z.array(z.string().url()),
   }),
 });
