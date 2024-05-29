@@ -74,6 +74,11 @@
             "date": 1716606602156,
             "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-25-05-09-error.log",
             "hash": "b1e7efb1a158fdaa8da274c2315a7b79eaea7d23acdcfd11ebbcbac241fb88f4"
+        },
+        {
+            "date": 1716904478923,
+            "name": "E:\\Travel Buddy Server\\logs\\winston\\errors\\TB-2024-28-05-19-error.log",
+            "hash": "43d21a044a34acc010142b733dfae31c0bd762da1d2234185ee6ec3f99c302c3"
         }
     ],
     "hashType": "sha256"
